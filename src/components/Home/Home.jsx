@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useLockNavigation from "../hooks/useLockNavigation";
 
 function Home() {
   const navigate = useNavigate();
 
+  useLockNavigation();
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate("/logof");
@@ -19,7 +22,7 @@ function Home() {
       <img
         src="/images/window_logo.jpg"
         alt="Window Logo"
-        className="w-full max-w-[400px] mb-5 md:mb-3"
+        className="w-full max-w-100 mb-5 md:mb-3"
       />
 
       {/* Name */}
@@ -34,7 +37,7 @@ function Home() {
 
       {/* Loader */}
       <div className="w-full flex justify-center mb-8 md:mb-9">
-        <div className="flex w-[80%] max-w-[300px] h-[16px] md:h-[18px] gap-[2px] p-[2px] bg-black border-2 border-[#3b6ea6] rounded">
+        <div className="flex w-[80%] max-w-75 h-4 md:h-4.5 gap-0.5 p-0.5 bg-black border-2 border-[#3b6ea6] rounded">
           <span className="loader-block"></span>
           <span className="loader-block delay-100"></span>
           <span className="loader-block delay-200"></span>

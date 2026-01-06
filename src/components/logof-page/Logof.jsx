@@ -1,25 +1,27 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
+import useLockNavigation from "../hooks/useLockNavigation";
 
 function Logof() {
   const navigate = useNavigate();
   const [showPowerBox, setShowPowerBox] = React.useState(false);
 
+  useLockNavigation();
+
   return (
     <div className="flex flex-col h-screen w-full font-sans overflow-hidden">
       {/* Header */}
-      <header className="h-[15vh] max-h-[100px] bg-[#EFEDCC] border-b-4 border-[#D6D3A6] shadow-sm relative z-10" />
+      <header className="h-[15vh] max-h-25 bg-[#EFEDCC] border-b-4 border-[#D6D3A6] shadow-sm relative z-10" />
 
       {/* Main Content */}
       <main
         className="flex-1 bg-[#242322] relative flex items-center justify-center 
-       relative
-    before:content-['']
-    before:absolute
-    before:inset-0
-    before:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)]
-    before:bg-[size:10px_10px]
-    before:z-[2]"
+       before:content-['']
+       before:absolute
+       before:inset-0
+       before:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)]
+       before:bg-size-[10px_10px]
+       before:z-2"
       >
         <div className="flex w-full max-w-5xl items-center justify-center gap-4 md:gap-16 px-4 flex-col md:flex-row font-serif">
           {/* Left Side - System Info */}
@@ -52,15 +54,15 @@ function Logof() {
           <div className="flex flex-col items-center md:items-start md:pl-6 z-10">
             <Link
               to="/welcome"
-              className="group mt-10 md:mt-0 flex items-center gap-4 w-full max-w-[260px] p-3 rounded-md 
-                         bg-gradient-to-r from-[#337193] to-transparent 
+              className="group mt-10 md:mt-0 flex items-center gap-4 w-full max-w-65 p-3 rounded-md 
+                         bg-linear-to-r from-[#337193] to-transparent 
                          text-white hover:from-[#f8953d] transition"
             >
               {/* Avatar */}
               <img
                 src="/images/userlogin.gif"
                 alt="Avatar"
-                className="h-[65px] w-[65px] rounded border-2 border-white object-cover 
+                className="h-16.25 w-16.25 rounded border-2 border-white object-cover 
                            group-hover:shadow-[0_0_10px_white]"
               />
 
@@ -77,7 +79,7 @@ function Logof() {
       </main>
 
       {/* Footer */}
-      <footer className="h-[15vh] max-h-[100px] bg-[#EFEDCC] border-t-4 border-[#D6D3A6] flex items-center justify-between px-6 sm:px-16">
+      <footer className="h-[15vh] max-h-25 bg-[#EFEDCC] border-t-4 border-[#D6D3A6] flex items-center justify-between px-6 sm:px-16">
         <div
           className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
           
@@ -103,7 +105,7 @@ function Logof() {
       </footer>
       {/* ================= XP POWER BOX ================= */}
       {showPowerBox && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center">
+        <div className="fixed inset-0 z-100 flex items-center justify-center">
           {/* Overlay */}
           <div
             className="absolute inset-0 bg-black/60"
@@ -111,9 +113,9 @@ function Logof() {
           />
 
           {/* Dialog */}
-          <div className="relative w-[350px] border-2 border-[#0A4DB8] shadow-2xl">
+          <div className="relative w-87.5 border-2 border-[#0A4DB8] shadow-2xl">
             {/* Title Bar */}
-            <div className="flex justify-between items-center px-3 py-2 bg-gradient-to-r from-[#0A4DB8] to-[#3A6EA5] text-white font-semibold">
+            <div className="flex justify-between items-center px-3 py-2 bg-linear-to-r from-[#0A4DB8] to-[#3A6EA5] text-white font-semibold">
               <span>Turn off SatyaPrakash XP</span>
               <img src="/images/favicon.png" className="w-5" />
             </div>
