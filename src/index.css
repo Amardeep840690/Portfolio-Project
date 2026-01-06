@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+.loader-block {
+  display: block;
+  flex: 1;
+  height: 100%;
+  background-color: #3b6ea6;
+  animation: loaderPulse 1s ease-in-out infinite;
+  transform-origin: bottom;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+@keyframes loaderPulse {
+  0% {
+    opacity: 0.3;
+    transform: scaleY(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scaleY(0.5);
+  }
+}
