@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import useLockNavigation from "../hooks/useLockNavigation";
+import useLockNavigation from "../../hooks/useLockNavigation";
 
 function Home() {
   const navigate = useNavigate();
@@ -9,7 +9,7 @@ function Home() {
   
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/logof");
+      navigate("/logoff");
     }, 5000);
 
     return () => clearTimeout(timer);

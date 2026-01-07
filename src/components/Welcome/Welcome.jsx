@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import useLockNavigation from "../hooks/useLockNavigation";
+import useLockNavigation from "../../hooks/useLockNavigation";
 
 export default function Welcome() {
   const navigate = useNavigate();

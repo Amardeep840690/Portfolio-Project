@@ -4,15 +4,15 @@ import { createBrowserRouter, Route, RouterProvider,createRoutesFromElements } f
 import './index.css'
 import App from './App.jsx'
 import Home from './components/Home/Home.jsx'
-import Logof from './components/logof-page/Logof.jsx'
-import Welcome from './components/welcome-page/Welcome.jsx'
+import Logoff from './components/Logoff/Logoff.jsx'
+import Welcome from './components/Welcome/Welcome.jsx'
 import Desktop from './components/Desktop/Desktop.jsx'
 
 const router=createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path='/' element={<Home/>}/>
-      <Route path='/logof' element={<Logof/>}/>
+      <Route path='/logoff' element={<Logoff/>}/>
       <Route path='/welcome' element={<Welcome/>}/>
       <Route path='/desktop' element={<Desktop/>}/>
     </>

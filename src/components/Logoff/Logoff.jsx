@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
-import useLockNavigation from "../hooks/useLockNavigation";
+import useLockNavigation from "../../hooks/useLockNavigation";
 
-function Logof() {
+function Logoff() {
   const navigate = useNavigate();
   const [showPowerBox, setShowPowerBox] = React.useState(false);
 
@@ -155,4 +155,4 @@ function Logof() {
   );
 }
 
-export default Logof;
+export default Logoff;
