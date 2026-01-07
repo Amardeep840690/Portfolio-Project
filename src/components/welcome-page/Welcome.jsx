@@ -27,17 +27,19 @@ export default function Welcome() {
       <div className="h-30 bg-linear-to-b from-blue-900 to-blue-800" />
 
       {/* Thin divider */}
-      <div className="h-0.75 bg-blue-300 opacity-80" />
+      <div className="h-0.75 bg-[linear-gradient(90deg,transparent,#bad7f8,transparent,transparent)]
+" />
 
       {/* Main content area */}
-      <div className="flex-1 bg-blue-500 flex items-center justify-center relative z-10">
+      <div className="flex-1 bg-blue-500 flex items-center justify-center relative z-10 ">
         <span className="text-white text-5xl italic font-bold tracking-wide text-shadow-lg">
           welcome
         </span>
       </div>
 
       {/* Bottom orange accent line */}
-      <div className="h-0.75 bg-orange-400" />
+      <div className="h-0.75 bg-[linear-gradient(90deg,transparent,#f8953d,transparent,transparent)]
+" />
 
       {/* Bottom dark bar */}
       <div className="h-30 bg-linear-to-t from-blue-900 to-blue-800" />
