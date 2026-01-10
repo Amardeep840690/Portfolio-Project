@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-export default function XPWindow({ win, onClose, onMinimize, onUpdate, bringFront }) {
+export default function XPWindow({ win, onClose, onMinimize, onUpdate, bringFront, children }) {
   const dragOffset = useRef({ x: 0, y: 0 });
   const resizeStart = useRef({ x: 0, y: 0, w: 0, h: 0 });
   const isDragging = useRef(false);
@@ -103,7 +103,11 @@ export default function XPWindow({ win, onClose, onMinimize, onUpdate, bringFron
 
       {/* CONTENT */}
       <div className="p-3 text-sm h-[calc(100%-32px)] overflow-auto select-none">
-        <b>{win.type}</b> window content goes here
+        {children || (
+          <>
+            <b>{win.type}</b> window content goes here
+          </>
+        )}
       </div>
 
       {/* RESIZE HANDLE */}

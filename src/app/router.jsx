@@ -2,10 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import HomePage from '@/pages/HomePage';
 import LogoffPage from '@/pages/LogoffPage';
 import WelcomePage from '@/pages/WelcomePage';
-import DesktopPage from '@/pages/DesktopPage';
-import ContactPage from '@/pages/ContactPage';
-import ProjectsPage from '@/pages/ProjectsPage';
-import ProtectedRoute from '@/features/auth/ProtectedRoute';
+import Desktop from '@/features/desktop';
 
 export const router = createBrowserRouter([
   {
@@ -13,35 +10,15 @@ export const router = createBrowserRouter([
     element: <HomePage />,
   },
   {
-    path: '/welcome',
-    element: <WelcomePage />,
-  },
-  {
     path: '/logoff',
     element: <LogoffPage />,
   },
   {
+    path: '/welcome',
+    element: <WelcomePage />,
+  },
+  {
     path: '/desktop',
-    element: (
-      <ProtectedRoute>
-        <DesktopPage />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: '/contact',
-    element: (
-      <ProtectedRoute>
-        <ContactPage />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: '/projects',
-    element: (
-      <ProtectedRoute>
-        <ProjectsPage />
-      </ProtectedRoute>
-    ),
+    element: <Desktop />,
   },
 ]);

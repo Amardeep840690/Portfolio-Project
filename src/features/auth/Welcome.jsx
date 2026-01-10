@@ -1,22 +1,19 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useLockNavigation from "../../hooks/useLockNavigation";
-import { useAuth } from "./AuthContext";
 
 export default function Welcome() {
   const navigate = useNavigate();
-  const { login } = useAuth();
 
   useLockNavigation();
 
   useEffect(() => {
-    const timer = setTimeout(async () => {
-      await login(); // Auto-login to pass ProtectedRoute
+    const timer = setTimeout(() => {
       navigate("/desktop");
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, [navigate, login]);
+  }, [navigate]);
 
   return (
     <div className="relative w-screen h-screen bg-blue-800 flex flex-col

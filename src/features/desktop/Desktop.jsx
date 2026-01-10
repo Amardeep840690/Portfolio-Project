@@ -3,6 +3,7 @@ import useLockNavigation from "../../hooks/useLockNavigation";
 import DesktopIcon from "./components/DesktopIcon";
 import XPWindow from "./components/XPWindow";
 import Taskbar from "./components/Taskbar";
+import { apps, getAppById } from "./registry";
 
 export default function Desktop() {
   useLockNavigation();
@@ -11,10 +12,13 @@ export default function Desktop() {
   const [startOpen, setStartOpen] = useState(false);
   const zIndex = useRef(1);
 
-  const openWindow = (type) => {
+  const openWindow = (appId) => {
+    const app = getAppById(appId);
+    if (!app) return;
+
     setWindows((prev) => {
       // check if window already exists
-      const existing = prev.find((w) => w.type === type);
+      const existing = prev.find((w) => w.appId === appId);
 
       if (existing) {
         // bring existing window to front
@@ -39,7 +43,8 @@ export default function Desktop() {
         ...prev,
         {
           id: Date.now(),
-          type,
+          appId,
+          type: app.title, // keep type as title for backward compatibility with XPWindow title bar
           x,
           y,
           w: 520,
@@ -83,15 +88,22 @@ export default function Desktop() {
     >
       {/* DESKTOP ICONS */}
       <div className="absolute top-6 left-6 flex flex-col gap-6 text-white text-sm">
-        <DesktopIcon icon="/images/about.webp" label="About Me" onDoubleClick={() => openWindow("About Me")} />
-        <DesktopIcon icon="/images/resume.webp" label="My Resume" onDoubleClick={() => openWindow("My Resume")} />
-        <DesktopIcon icon="/images/projects.webp" label="My Projects" onDoubleClick={() => openWindow("My Projects")} />
-        <DesktopIcon icon="/images/contact.webp" label="Contact Me" onDoubleClick={() => openWindow("Contact Me")} />
+        {apps.map((app) => (
+          <DesktopIcon
+            key={app.id}
+            icon={app.icon}
+            label={app.title}
+            onDoubleClick={() => openWindow(app.id)}
+          />
+        ))}
       </div>
 
       {/* WINDOWS */}
-      {windows.map(
-        (win) =>
+      {windows.map((win) => {
+        const app = getAppById(win.appId);
+        const Component = app ? app.component : null;
+
+        return (
           !win.minimized && (
             <XPWindow
               key={win.id}
@@ -100,9 +112,12 @@ export default function Desktop() {
               onClose={() => closeWindow(win.id)}
               onMinimize={() => updateWindow(win.id, { minimized: true })}
               onUpdate={(updates) => updateWindow(win.id, updates)}
-            />
+            >
+              {Component && <Component />}
+            </XPWindow>
           )
-      )}
+        );
+      })}
 
       {/* TASKBAR */}
       <Taskbar
