@@ -20,12 +20,12 @@ export default function Taskbar({ startOpen, onToggleStart, windows, onWindowCli
   }, []);
 
   return (
-    <div className="absolute bottom-0 left-0 w-full h-10.5 bg-linear-to-t from-[#245edb] to-[#3a6edc] flex items-center px-2 select-none">
+    <div className="absolute bottom-0 left-0 w-full h-9.5 bg-linear-to-t from-[#245edb] to-[#3a6edc] flex items-center px-2 select-none">
       
       {/* Start Button */}
       <button
         onClick={onToggleStart}
-        className="flex items-center gap-2 bg-linear-to-r from-[#3aa655] to-[#1f7a36] text-white font-bold px-4 py-1 rounded-r-full shadow-inner select-none"
+        className="flex items-center gap-2 bg-linear-to-r from-[#3aa655] to-[#1f7a36] text-white font-bold px-4 py-1 rounded-r-full shadow-inner select-none transition-transform transform active:scale-95"
       >
         <img
           src="/images/favicon.png"

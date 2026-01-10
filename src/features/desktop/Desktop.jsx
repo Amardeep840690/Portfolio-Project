@@ -31,11 +31,11 @@ export default function Desktop() {
       }
 
       // else create new window with cascade offset
-      const offset = 30;
+      const offset = 10;
       const index = prev.length;
 
-      let x = 180 + index * offset;
-      let y = 100 + index * offset;
+      let x = 280 + index * offset;
+      let y = 5 + index * offset;
 
       if (x > window.innerWidth - 400) x = 180;
       if (y > window.innerHeight - 300) y = 100;
@@ -48,8 +48,8 @@ export default function Desktop() {
           type: app.title, // keep type as title for backward compatibility with XPWindow title bar
           x,
           y,
-          w: 520,
-          h: 420,
+          w: 600,
+          h: 600,
           minimized: false,
           maximized: false,
           z: ++zIndex.current,

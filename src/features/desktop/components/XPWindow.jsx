@@ -91,7 +91,7 @@ export default function XPWindow({ win, onClose, onMinimize, onUpdate, bringFron
       {/* TITLE BAR */}
       <div
         onMouseDown={startDrag}
-        className="h-8 bg-gradient-to-r from-[#245edb] to-[#5a8dee] flex items-center justify-between px-2 text-white cursor-move select-none"
+        className="h-8 bg-linear-to-r from-[#245edb] to-[#5a8dee] flex items-center justify-between px-2 text-white cursor-move select-none"
       >
         <span className="pointer-events-none">{win.type}</span>
         <div className="flex gap-1">

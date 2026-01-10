@@ -47,15 +47,15 @@ export default function StartMenu({ onOpenApp, onClose }) {
           </div>
 
           <div
-            className="mt-6 sm:mt-10 text-white text-[12px] sm:text-[15px]"
+            className="mt-6 sm:mt-20 text-white text-[12px] sm:text-[15px]"
             style={{
               fontFamily: "'Great Vibes', cursive",
               writingMode: "vertical-rl",
               textOrientation: "mixed",
-              transform: "rotate(200deg)"
+              transform: "rotate(300deg)"
             }}
           >
-            Software Developer
+            <img src="images/typeSignature.png" alt="signature" className="h-25" />
           </div>
         </div>
 
