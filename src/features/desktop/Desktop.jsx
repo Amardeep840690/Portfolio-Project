@@ -3,6 +3,7 @@ import useLockNavigation from "../../hooks/useLockNavigation";
 import DesktopIcon from "./components/DesktopIcon";
 import XPWindow from "./components/XPWindow";
 import Taskbar from "./components/Taskbar";
+import StartMenu from "./components/start-btn/StartMenu";
 import { apps, getAppById } from "./registry";
 
 export default function Desktop() {
@@ -118,6 +119,10 @@ export default function Desktop() {
           )
         );
       })}
+      {/* START MENU */}
+      {startOpen && (
+        <StartMenu onOpenApp={openWindow} onClose={() => setStartOpen(false)} />
+      )}
 
       {/* TASKBAR */}
       <Taskbar
