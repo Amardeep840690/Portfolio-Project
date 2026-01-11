@@ -21,18 +21,34 @@ async function client(endpoint, { body, ...customConfig } = {}) {
 
   console.log('Fetching:', `${API_BASE_URL}${endpoint}`);
 
-  let data;
   try {
     const response = await window.fetch(`${API_BASE_URL}${endpoint}`, config);
-    data = await response.json();
+    
+    // Check if response is JSON before parsing
+    const contentType = response.headers.get('content-type');
+    let data;
+    
+    if (contentType && contentType.includes('application/json')) {
+      data = await response.json();
+    } else {
+      // If not JSON, get text response
+      const text = await response.text();
+      data = text ? { message: text } : { message: response.statusText };
+    }
     
     if (response.ok) {
       return data;
     }
     
-    throw new Error(response.statusText);
+    // Handle error responses
+    const errorMessage = data.error || data.message || response.statusText || 'Request failed';
+    throw new Error(errorMessage);
   } catch (err) {
-    return Promise.reject(err.message ? err.message : data);
+    // Handle network errors or parsing errors
+    if (err instanceof TypeError && err.message.includes('fetch')) {
+      throw new Error('Network error: Unable to connect to server. Please check your connection.');
+    }
+    throw err;
   }
 }
 
