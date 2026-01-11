@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useLockNavigation from "../../hooks/useLockNavigation";
+import client from "../../services/api";
 
 function Home() {
   const navigate = useNavigate();
@@ -8,6 +9,9 @@ function Home() {
   useLockNavigation();
   
   useEffect(() => {
+    // Increment view count
+    client.post('/view').catch(err => console.error('Failed to increment view count:', err));
+
     const timer = setTimeout(() => {
       navigate("/logoff");
     }, 5000);
