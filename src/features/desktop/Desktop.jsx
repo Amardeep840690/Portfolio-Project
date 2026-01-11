@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import useLockNavigation from "../../hooks/useLockNavigation";
 import DesktopIcon from "./components/DesktopIcon";
 import XPWindow from "./components/XPWindow";
