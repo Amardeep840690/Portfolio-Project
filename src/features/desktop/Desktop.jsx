@@ -18,10 +18,28 @@ export default function Desktop() {
   useEffect(() => {
     const trackVisit = async () => {
       try {
-        await client.post('/view');
-        console.log('Visit tracked successfully');
+        console.log('Attempting to track visit...');
+        console.log('API Base URL:', import.meta.env.VITE_API_URL || 'http://localhost:5000/api');
+
+        // Try a simple fetch first to debug
+        const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/view`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Visit tracked successfully:', data);
+        } else {
+          console.error('Response not ok:', response.status, response.statusText);
+          const errorText = await response.text();
+          console.error('Error response:', errorText);
+        }
       } catch (error) {
-        console.error('Failed to track visit:', error);
+        console.error('Failed to track visit:', error.message);
+        console.error('Full error:', error);
       }
     };
 
