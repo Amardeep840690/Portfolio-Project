@@ -5,6 +5,7 @@ import XPWindow from "./components/XPWindow";
 import Taskbar from "./components/Taskbar";
 import StartMenu from "./components/start-btn/StartMenu";
 import { apps, getAppById } from "./registry";
+import client from "../../services/api";
 
 export default function Desktop() {
   useLockNavigation();
@@ -12,6 +13,20 @@ export default function Desktop() {
   const [windows, setWindows] = useState([]);
   const [startOpen, setStartOpen] = useState(false);
   const zIndex = useRef(1);
+
+  // Track visit when desktop loads
+  useEffect(() => {
+    const trackVisit = async () => {
+      try {
+        await client.post('/view');
+        console.log('Visit tracked successfully');
+      } catch (error) {
+        console.error('Failed to track visit:', error);
+      }
+    };
+
+    trackVisit();
+  }, []); // Empty dependency array means this runs once when component mounts
 
   const openWindow = (appId) => {
     const app = getAppById(appId);
