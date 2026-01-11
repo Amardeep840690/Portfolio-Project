@@ -1,4 +1,11 @@
+// Get API URL from environment variable (automatically loaded from .env file)
+// Vite requires VITE_ prefix for environment variables exposed to frontend
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
+// Log API URL in development for debugging (only in dev mode)
+if (import.meta.env.DEV) {
+  console.log('API Base URL:', API_BASE_URL);
+}
 
 /**
  * Generic fetch wrapper to handle JSON parsing and error checking
